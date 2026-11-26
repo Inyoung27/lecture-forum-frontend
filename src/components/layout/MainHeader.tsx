@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router";
 import { IoIosChatbubbles } from "react-icons/io";
-import Button from "../common/Button.tsx";
+import Button from "../common/button/Button.tsx";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/theme/ThemeContext.ts";
@@ -38,12 +38,12 @@ const NavGroup = styled.nav`
     gap: 16px;
 `;
 
-
 function MainHeader() {
     const context = useContext(ThemeContext);
-    if(!context) {
+    if (!context) {
         throw new Error("컨텍스트를 불러오는데 실패했습니다.");
     }
+
     return (
         <HeaderContainer>
             <HeaderInner>
@@ -52,10 +52,13 @@ function MainHeader() {
                     토론대난투
                 </Logo>
                 <NavGroup>
-                    <Button color={context.theme === "light" ? "warning" : "info"} variant={"icon"} onClick={context.onChangeTheme}>
-                        {context.theme === "light"? <IoSunny size={20} /> : <IoMoon size={20} />}
+                    <Button
+                        color={context.theme === "light" ? "warning" : "info"}
+                        variant={"icon"}
+                        onClick={context.onChangeTheme}>
+                        {context.theme === "light" ? <IoSunny size={20} /> : <IoMoon size={20} />}
                     </Button>
-                    <Button as={Link} to={"auth/signin"} color={"secondary"} variant={"text"}>
+                    <Button as={Link} to={"/auth/signin"} color={"secondary"} variant={"text"}>
                         로그인
                     </Button>
                     <Button as={Link} to={"/auth/signup"} color={"primary"} variant={"contained"}>
