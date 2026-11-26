@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import type { InputHTMLAttributes } from "react";
 import Input from "./Input.tsx";
+import type { UseFormRegisterReturn } from "react-hook-form";
 
 const StyledInputGroup = styled.div`
     display: flex;
@@ -24,14 +25,14 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>{
     label?: string;
     errorMessage?: string;
     id?: string;
-    wrap?: boolean;
+    registerObj?: UseFormRegisterReturn;
 }
 
-function InPutGroup({ label, errorMessage, id, ...x }: Props) {
+function InPutGroup({ label, errorMessage,registerObj, id, ...x }: Props) {
     return (
         <StyledInputGroup>
             {label && <Label>{label}</Label>}
-            <Input id={id} $errorMessage={errorMessage} {...x} />
+            <Input id={id} $errorMessage={errorMessage} {...registerObj} {...x} />
             {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         </StyledInputGroup>
     );
