@@ -1,4 +1,4 @@
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router";
 import { IoIosChatbubbles } from "react-icons/io";
 import Button from "../common/Button.tsx";
