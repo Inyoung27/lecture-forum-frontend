@@ -1,4 +1,4 @@
 function SignInPage() {
     return <></>
 }
-export { SignInPage }
+export default SignInPage;
